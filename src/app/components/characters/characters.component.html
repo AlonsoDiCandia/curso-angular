@@ -1,6 +1,12 @@
 <h2>Lista de personajes</h2>
 <ul>
   <li *ngFor="let p of characters">
-    {{ p.name }} – Origen: {{ p.origin.name }}
+    {{p.id}} {{ p.name }} – Origen: {{ p.origin.name }}
   </li>
 </ul>
+
+<input #miInput type="string" placeholder="Escribe algo">
+<button (click)="procesarValor(miInput.value)">Enviar</button>
+
+<h2>Unico personaje</h2>
+<p *ngIf="character"> {{character.id}} {{ character.name }} – Origen: {{ character.origin.name }}</p>

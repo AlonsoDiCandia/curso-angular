@@ -10,14 +10,20 @@ import { Character, CharacterResponse } from '../models/character';
 })
 export class RickAndMortyService {
 
-  private url = 'https://rickandmortyapi.com/api/character'
+  private url = 'https://rickandmortyapi.com/api/'
 
-  constructor(private http: HttpClient) { } // yo ya tengo disponible en el servicio una variable propia del servicio llamada http
+  constructor(private http: HttpClient) { } 
 
   getCharacters() : Observable<Character[]> {
-    return this.http.get<CharacterResponse>(this.url).pipe(
+    const characterUrl = `${this.url}character/`
+    return this.http.get<CharacterResponse>(characterUrl).pipe(
       map(resp => resp.results)
     );
+  }
+
+  getOneCharacter(id: number): Observable<Character> {
+    const characterUrl = `${this.url}character/${id}`
+    return this.http.get<Character>(characterUrl)
   }
 
 }
