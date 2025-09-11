@@ -4,9 +4,3 @@
     {{p.id}} {{ p.name }} – Origen: {{ p.origin.name }}
   </li>
 </ul>
-
-<input #miInput type="string" placeholder="Escribe algo">
-<button (click)="procesarValor(miInput.value)">Enviar</button>
-
-<h2>Unico personaje</h2>
-<p *ngIf="character"> {{character.id}} {{ character.name }} – Origen: {{ character.origin.name }}</p>

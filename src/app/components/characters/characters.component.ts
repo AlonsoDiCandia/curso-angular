@@ -10,9 +10,7 @@ import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
 })
 export class CharactersComponent implements OnInit{
 
-  valor: number = 0;
   characters: Character[] = [];
-  character?: Character;
 
   constructor(private rickAndMortyService: RickAndMortyService) {}
 
@@ -23,18 +21,4 @@ export class CharactersComponent implements OnInit{
       }
     );
   }
-
-  procesarValor(valor: string) {
-    this.valor = Number(valor);
-    this.mostrarUnPersonaje();
-  }
-
-  mostrarUnPersonaje() {
-    this.rickAndMortyService.getOneCharacter(this.valor).subscribe(
-      data => {
-        this.character = data
-      }
-    )
-  }
-
 }
