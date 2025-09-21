@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Character } from 'src/app/models/character';
 
 import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
@@ -10,18 +11,26 @@ import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
 })
 export class PersonajeComponent {
 
-  valor: number = 0;
+  id!: number  ;
   character?: Character;
 
-  constructor(private rickAndMortyService: RickAndMortyService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private rickAndMortyService: RickAndMortyService
+  ) {}
+
+  ngOnInit(): void {
+    this.id = Number(this.route.snapshot.paramMap.get('id')); // obtiene el parámetro
+    this.mostrarUnPersonaje();
+  }
 
   procesarValor(valor: string) {
-    this.valor = Number(valor);
+    this.id = Number(valor);
     this.mostrarUnPersonaje();
   }
 
   mostrarUnPersonaje() {
-    this.rickAndMortyService.getOneCharacter(this.valor).subscribe(
+    this.rickAndMortyService.getOneCharacter(this.id).subscribe(
       data => {
         this.character = data
       }

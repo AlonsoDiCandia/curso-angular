@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'personajes', pathMatch: 'full' },
   { path: 'personajes', component: CharactersComponent },
   { path: 'personaje', component: PersonajeComponent},
-  // { path: '**', redirectTo: 'personajes' }
+  { path: 'personaje/:id', component: PersonajeComponent},
 ];
 
 @NgModule({
