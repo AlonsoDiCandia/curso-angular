@@ -21,7 +21,9 @@ export class PersonajeComponent {
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id')); // obtiene el parámetro
-    this.mostrarUnPersonaje();
+    if (this.id) {
+      this.mostrarUnPersonaje();
+    }
   }
 
   procesarValor(valor: string) {
@@ -37,3 +39,4 @@ export class PersonajeComponent {
     )
   }
 }
+
