@@ -11,7 +11,9 @@ export interface Character {
     name: string;
     status: string;
     species: string;
-    origin: Origin
+    type: string;
+    gender: string;
+    origin: Origin;
 }
 
 export interface Origin {

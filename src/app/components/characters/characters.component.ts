@@ -8,7 +8,7 @@ import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css']
 })
-export class CharactersComponent implements OnInit{
+export class CharactersComponent implements OnInit {
 
   characters: Character[] = [];
 
