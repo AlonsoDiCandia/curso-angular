@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Character, Origin } from 'src/app/models/character';
 import { map, filter } from 'rxjs/operators'
 
@@ -9,11 +9,11 @@ import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
   templateUrl: './origenes.component.html',
   styleUrls: ['./origenes.component.css']
 })
-export class OrigenesComponent {
+export class OrigenesComponent implements OnInit {
   origenes: Origin[] = [];
 
   constructor(private rickAndMortyService: RickAndMortyService) {}
-
+  
   ngOnInit(): void {
     this.rickAndMortyService.getOrigenes().subscribe(
       data => {

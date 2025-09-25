@@ -21,14 +21,14 @@ export class RickAndMortyService {
     );
   }
 
-  getOrigenes() : Observable<Origin[]> {
+  getOrigenes() : Observable<Origin[]> { // En esta funcion pretendemos usar el map para obtener los origenes unicos
     const characterUrl = `${this.url}character/`
     return this.http.get<CharacterResponse>(characterUrl).pipe(
-      map(resp => resp.results),
+      map(resp => resp.results), // [ {name: --, status: --, origin: {name: --}}, {name: --, status: --, origin: {name: --}}, {name: --, status: --, origin: {name: --}}]. Esto tiene 20 elementos
       map(per => per.map(
-        p => p.origin
+        p => p.origin // [ {origin: {name: --}}, {origin: {name: --}}, {origin: {name: --}}]. Esto tiene 20 elementos
       )),
-      map(origenes => Array.from(new Map(origenes.map(o => [o.name, o])).values()))
+      map(origenes => Array.from(new Map(origenes.map(o => [o.name, o])).values())) // array('Alexis': 'Parma', 'Claudio': 'Sevilla')       [['s', Origin],['ss', Origin],['se', Origin],['as', Origin]]
     );
   }
 
