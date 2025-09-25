@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { OrigenesComponent } from './origenes.component';
+
+describe('OrigenesComponent', () => {
+  let component: OrigenesComponent;
+  let fixture: ComponentFixture<OrigenesComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ OrigenesComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(OrigenesComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
