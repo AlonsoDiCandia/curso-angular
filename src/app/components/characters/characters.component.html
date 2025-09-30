@@ -1,6 +1,46 @@
-<h2>Lista de personajes</h2>
-<ul>
-  <li *ngFor="let p of characters">
-    {{p.id}} {{ p.name }} – Origen: {{ p.origin.name }}
-  </li>
-</ul>
+<div class="column">
+  <h2>Lista de personajes</h2>
+  <ul>
+    <li *ngFor="let p of characters; let par = even"
+      (click)="p.mostrar = !p.mostrar">
+
+      <ng-container *ngIf="par; else Impar">
+        <p style="color: red">
+          ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }} - {{ p.mostrar }} - {{ p.episode.length }}
+        </p>
+      </ng-container>
+
+      <ng-template #Impar>
+        <p style="color: gray">
+          ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }} - {{ p.mostrar }} - {{ p.episode.length }}
+        </p>
+      </ng-template>
+
+      <ng-container *ngIf="p.mostrar">
+          <img [src]=p.image>
+          <button (click)="irAlPersonaje(p.id)">Ir al personaje</button>
+      </ng-container>
+    </li>
+  </ul> 
+</div>
+
+
+
+
+
+
+  <!-- <ul>
+    <ng-container *ngFor="let p of characters">
+      <li>
+        ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }}
+      </li>
+    </ng-container>
+  </ul> -->
+
+  <!-- <ul>
+    <div *ngFor="let p of characters">
+      <li>
+        ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }}
+      </li>
+    </div>
+  </ul> -->

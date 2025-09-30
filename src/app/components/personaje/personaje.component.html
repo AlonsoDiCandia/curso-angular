@@ -2,4 +2,11 @@
 <button (click)="procesarValor(miInput.value)">Enviar</button>
 
 <h2>Unico personaje</h2>
-<p *ngIf="character"> {{character.id}} {{ character.name }} – Origen: {{ character.origin.name }}</p>
+<div *ngIf="character; else NoCharacter"> 
+    <p> {{ character.id }} {{ character.name }} – Origen: {{ character.origin.name }} </p>
+</div>
+<!-- poder ver la imagen del personaje -->
+
+<ng-template #NoCharacter>
+  <p> No hay personajes que mostrar </p>
+</ng-template>

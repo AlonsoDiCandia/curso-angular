@@ -1,0 +1,14 @@
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.column ul {
+    list-style: none;
+}
+
+.column ul li {
+    cursor: pointer;
+}

@@ -14,6 +14,9 @@ export interface Character {
     type: string;
     gender: string;
     origin: Origin;
+    image: string;
+    mostrar: boolean;
+    episode: string[];
 }
 
 export interface Origin {
