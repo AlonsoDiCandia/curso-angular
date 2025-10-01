@@ -14,7 +14,7 @@ export class PersonajeComponent implements OnInit {
 
   id!: number;
   character?: Character;
-  episodes: Episode[] = [];
+  episodiosProcesados: Episode[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +53,9 @@ export class PersonajeComponent implements OnInit {
   traerEpisodio(url: string) {
     this.rickAndMortyService.getEpisode(url).subscribe(
       data => {
-        this.episodes.push(data);
+        if(!this.episodiosProcesados.some(ep => ep.name === data.name)) {
+          this.episodiosProcesados.push(data);
+        }
       }
     )
   }
