@@ -25,9 +25,13 @@ export interface Origin {
 }
 
 export interface Episode {
+    // Esto lo trae el endpoint
+    id: number;
     name: string;
     air_date: string;
-    procesed: boolean;
-    episode_number: string;
+    episode: string;
+
+    // Lo va a procesar y asignar el servicio luego de obtener la respuesta del endpoint
     season: string;
+    episode_number: string;
 }
