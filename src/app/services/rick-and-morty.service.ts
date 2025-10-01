@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { distinct, map } from 'rxjs/operators';
 
-import { Character, CharacterResponse, Origin } from '../models/character';
+import { Character, CharacterResponse, Origin, Episode } from '../models/character';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,11 @@ export class RickAndMortyService {
   private url = 'https://rickandmortyapi.com/api/'
 
   constructor(private http: HttpClient) { } 
+
+  getOneCharacter(id: number): Observable<Character> {
+    const characterUrl = `${this.url}character/${id}`
+    return this.http.get<Character>(characterUrl)
+  }
 
   getCharacters() : Observable<Character[]> {
     const characterUrl = `${this.url}character/`
@@ -32,9 +37,9 @@ export class RickAndMortyService {
     );
   }
 
-  getOneCharacter(id: number): Observable<Character> {
-    const characterUrl = `${this.url}character/${id}`
-    return this.http.get<Character>(characterUrl)
+  getEpisode(url: string) : Observable<Episode> {
+    return this.http.get<Episode>(url).pipe(
+      map(e => ({ ...e, procesed: false, episode_number: e.air_date.slice(1,3), season: e.air_date.slice(4,6)}))
+    );
   }
-
 }

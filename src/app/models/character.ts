@@ -23,3 +23,11 @@ export interface Origin {
     name: string;
     url: string;
 }
+
+export interface Episode {
+    name: string;
+    air_date: string;
+    procesed: boolean;
+    episode_number: string;
+    season: string;
+}

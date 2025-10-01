@@ -1,12 +1,31 @@
-<input #miInput type="string" placeholder="Escribe algo">
-<button (click)="procesarValor(miInput.value)">Enviar</button>
+<div class="column">
+    <div>
+        <input #miInput type="string" placeholder="Escribe algo">
+        <button (click)="procesarValor(miInput.value)">Enviar</button>
+    </div>
 
-<h2>Unico personaje</h2>
-<div *ngIf="character; else NoCharacter"> 
-    <p> {{ character.id }} {{ character.name }} – Origen: {{ character.origin.name }} </p>
+    <h2>Unico personaje</h2>
+    <div *ngIf="character; else NoCharacter"> 
+        <p> {{ character.id }} {{ character.name }} – Origen: {{ character.origin.name }} </p>
+
+        <h3>Lista episodios sin procesar</h3>
+        <ul>
+            <li class="procesar" *ngFor="let e of character.episode"
+            #item
+            (click)="traerEpisodio(e); item.classList.add('seleccionado')">
+                {{ e }} 
+            </li>
+        </ul>
+        <h3>Lista episodios procesados</h3>
+        <ul>
+            <li *ngFor="let ep of episodes">
+                {{ ep.name }}
+            </li>
+        </ul>
+    </div>
+    <!-- poder ver la imagen del personaje -->
+
+    <ng-template #NoCharacter>
+    <p> No hay personajes que mostrar </p>
+    </ng-template>
 </div>
-<!-- poder ver la imagen del personaje -->
-
-<ng-template #NoCharacter>
-  <p> No hay personajes que mostrar </p>
-</ng-template>

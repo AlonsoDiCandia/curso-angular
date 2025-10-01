@@ -1,0 +1,15 @@
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    padding: 50px;
+}
+
+.column ul li.procesar {
+    cursor: pointer;
+}
+
+.column ul li.seleccionado {
+    color: green;
+}

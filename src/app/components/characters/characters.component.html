@@ -7,6 +7,9 @@
       <ng-container *ngIf="par; else Impar">
         <p style="color: red">
           ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }} - {{ p.mostrar }} - {{ p.episode.length }}
+          <!-- <input type="checkbox" [checked]="p.mostrar"> -->
+           <!-- <input #myInput [value]="p.name" (input)="p.name = myInput.value"> -->
+          <input [(ngModel)]="p.name">
         </p>
       </ng-container>
 
@@ -23,24 +26,3 @@
     </li>
   </ul> 
 </div>
-
-
-
-
-
-
-  <!-- <ul>
-    <ng-container *ngFor="let p of characters">
-      <li>
-        ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }}
-      </li>
-    </ng-container>
-  </ul> -->
-
-  <!-- <ul>
-    <div *ngFor="let p of characters">
-      <li>
-        ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }}
-      </li>
-    </div>
-  </ul> -->

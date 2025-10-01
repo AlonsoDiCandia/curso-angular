@@ -27,6 +27,8 @@ export class CharactersComponent implements OnInit {
   }
 
   irAlPersonaje(id: number) {
-    this.router.navigate(["/personaje", id])
+    this.router.navigate(["/personaje", id]) // /personaje/1
   }
+
+
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character } from 'src/app/models/character';
+import { Character, Episode } from 'src/app/models/character';
 import { map, filter } from 'rxjs/operators'
 
 import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
@@ -14,6 +14,7 @@ export class PersonajeComponent implements OnInit {
 
   id!: number;
   character?: Character;
+  episodes: Episode[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -45,6 +46,14 @@ export class PersonajeComponent implements OnInit {
     this.rickAndMortyService.getOneCharacter(this.id).subscribe(
       data => {
         this.character = data
+      }
+    )
+  }
+
+  traerEpisodio(url: string) {
+    this.rickAndMortyService.getEpisode(url).subscribe(
+      data => {
+        this.episodes.push(data);
       }
     )
   }
