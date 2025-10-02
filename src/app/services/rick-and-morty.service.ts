@@ -39,7 +39,7 @@ export class RickAndMortyService {
 
   getEpisode(url: string) : Observable<Episode> {
     return this.http.get<Episode>(url).pipe(
-      map(e => ({ ...e, procesed: false, episode_number: e.air_date.slice(1,3), season: e.air_date.slice(4,6)}))
+      map(e => ({ ...e, url, episode_number: e.air_date.slice(1,3), season: e.air_date.slice(4,6)}))
     );
   }
 }

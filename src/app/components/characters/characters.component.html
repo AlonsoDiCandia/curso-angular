@@ -2,7 +2,7 @@
   <h2>Lista de personajes</h2>
   <ul>
     <li *ngFor="let p of characters; let par = even"
-      (click)="p.mostrar = !p.mostrar">
+      (click)="seleccionarPersonaje(p)">
 
       <ng-container *ngIf="par; else Impar">
         <p style="color: red">
@@ -18,11 +18,10 @@
           ID: {{ p.id }} - Nombre: {{ p.name }} – Origen: {{ p.origin.name }} - {{ p.mostrar }} - {{ p.episode.length }}
         </p>
       </ng-template>
-
-      <ng-container *ngIf="p.mostrar">
-          <img [src]=p.image>
-          <button (click)="irAlPersonaje(p.id)">Ir al personaje</button>
-      </ng-container>
     </li>
   </ul> 
+  <h3>Personaje</h3>
+  <ng-container *ngIf="personajeSeleccionado">
+      <app-card-personaje [personaje]="personajeSeleccionado"></app-card-personaje>
+  </ng-container>
 </div>

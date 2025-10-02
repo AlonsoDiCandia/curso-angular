@@ -30,7 +30,8 @@ export interface Episode {
     name: string;
     air_date: string;
     episode: string;
-
+    url: string;
+    
     // Lo va a procesar y asignar el servicio luego de obtener la respuesta del endpoint
     season: string;
     episode_number: string;

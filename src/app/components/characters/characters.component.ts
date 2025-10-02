@@ -12,6 +12,7 @@ import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
 export class CharactersComponent implements OnInit {
 
   characters: Character[] = [];
+  personajeSeleccionado?: Character;
 
   constructor(
     private router: Router,
@@ -28,6 +29,10 @@ export class CharactersComponent implements OnInit {
 
   irAlPersonaje(id: number) {
     this.router.navigate(["/personaje", id]) // /personaje/1
+  }
+
+  seleccionarPersonaje(personaje: Character) {
+    this.personajeSeleccionado = personaje;
   }
 
 

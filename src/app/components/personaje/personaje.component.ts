@@ -51,13 +51,14 @@ export class PersonajeComponent implements OnInit {
   }
 
   traerEpisodio(url: string) {
-    this.rickAndMortyService.getEpisode(url).subscribe(
-      data => {
-        if(!this.episodiosProcesados.some(ep => ep.name === data.name)) {
+    if (!this.episodiosProcesados.some(ep => ep.url === url))
+    {
+      this.rickAndMortyService.getEpisode(url).subscribe(
+        data => {
           this.episodiosProcesados.push(data);
-        }
       }
     )
+    }
   }
 }
 

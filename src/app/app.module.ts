@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { CharactersComponent } from './components/characters/characters.component';
 import { PersonajeComponent } from './components/personaje/personaje.component';
 import { OrigenesComponent } from './components/origenes/origenes.component';
+import { CardPersonajeComponent } from './components/card-personaje/card-personaje.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharactersComponent,
     PersonajeComponent,
-    OrigenesComponent
+    OrigenesComponent,
+    CardPersonajeComponent
   ],
   imports: [
     BrowserModule,
