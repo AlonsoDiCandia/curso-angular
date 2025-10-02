@@ -22,6 +22,9 @@
   </ul> 
   <h3>Personaje</h3>
   <ng-container *ngIf="personajeSeleccionado">
-      <app-card-personaje [personaje]="personajeSeleccionado"></app-card-personaje>
+      <app-card-personaje [personaje]="personajeSeleccionado" 
+      (favorito)="onMarcadoFavorito($event)"
+      (noFavorito)="onDesmarcadoFavorito($event)">
+    </app-card-personaje>
   </ng-container>
 </div>

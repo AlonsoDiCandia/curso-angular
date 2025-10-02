@@ -35,5 +35,19 @@ export class CharactersComponent implements OnInit {
     this.personajeSeleccionado = personaje;
   }
 
+  onMarcadoFavorito(p: Character) {
+    let personaje = this.characters.find(c => c.id === p.id);
+    if (personaje && !personaje.name.includes('⭐')) {
+      personaje.name = '⭐' + personaje.name + '⭐';
+    }
+  }
+
+  onDesmarcadoFavorito(p: Character) {
+    let personaje = this.characters.find(c => c.id === p.id);
+    if (personaje) {
+      personaje.name = personaje.name.replace(/⭐/g, "")
+    }
+  }
+
 
 }
