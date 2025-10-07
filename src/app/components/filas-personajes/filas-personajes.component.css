@@ -1,0 +1,28 @@
+.grid-personajes {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+.card-personaje {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  display: flex;               /* centra la imagen dentro */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;            /* oculta si la imagen se sale */
+  border-radius: 8px;          /* opcional: bordes redondeados */
+}
+
+.card-personaje img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* 🔹 ajusta la imagen al espacio */
+  object-position: center;     /* centra el recorte */
+  border-radius: 6px;
+}

@@ -14,9 +14,13 @@ export class RickAndMortyService {
 
   constructor(private http: HttpClient) { } 
 
-  getOneCharacter(id: number): Observable<Character> {
+  getOneCharacterByID(id: number): Observable<Character> {
     const characterUrl = `${this.url}character/${id}`
     return this.http.get<Character>(characterUrl)
+  }
+
+  traerUnPersonajePorUrl(url: string): Observable<Character> {
+    return this.http.get<Character>(url)
   }
 
   getCharacters() : Observable<Character[]> {
@@ -26,7 +30,7 @@ export class RickAndMortyService {
     );
   }
 
-  getOrigenes() : Observable<Origin[]> { // En esta funcion pretendemos usar el map para obtener los origenes unicos
+  getOrigenesDesdePersonajes() : Observable<Origin[]> { // En esta funcion pretendemos usar el map para obtener los origenes unicos
     const characterUrl = `${this.url}character/`
     return this.http.get<CharacterResponse>(characterUrl).pipe(
       map(resp => resp.results), // [ {name: --, status: --, origin: {name: --}}, {name: --, status: --, origin: {name: --}}, {name: --, status: --, origin: {name: --}}]. Esto tiene 20 elementos
@@ -35,6 +39,10 @@ export class RickAndMortyService {
       )),
       map(origenes => Array.from(new Map(origenes.map(o => [o.name, o])).values())) // array('Alexis': 'Parma', 'Claudio': 'Sevilla')       [['s', Origin],['ss', Origin],['se', Origin],['as', Origin]]
     );
+  }
+
+  getOrigen(url: string) : Observable<Origin> {
+    return this.http.get<Origin>(url)
   }
 
   getEpisode(url: string) : Observable<Episode> {

@@ -22,6 +22,7 @@ export interface Character {
 export interface Origin {
     name: string;
     url: string;
+    residents: string[];
 }
 
 export interface Episode {

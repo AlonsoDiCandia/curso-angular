@@ -1,0 +1,12 @@
+<ul class="grid-personajes">
+    <li class="card-personaje" *ngFor="let p of personajes"
+    (click)="seleccionPersonaje(p)">
+        <img [src]="p.image">
+    </li>
+</ul>
+
+<ng-container *ngIf="personaje1 && personaje2">
+    <app-competencia-personajes [personaje1]="personaje1"
+    [personaje2]="personaje2">
+    </app-competencia-personajes>
+</ng-container>

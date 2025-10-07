@@ -43,7 +43,7 @@ export class PersonajeComponent implements OnInit {
   }
 
   mostrarUnPersonaje() {
-    this.rickAndMortyService.getOneCharacter(this.id).subscribe(
+    this.rickAndMortyService.getOneCharacterByID(this.id).subscribe(
       data => {
         this.character = data
       }
