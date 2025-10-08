@@ -1,5 +1,18 @@
-<div class="versus">
-    <img *ngIf="personaje1" [src]="personaje1.image">
-    <h2>V/S</h2>
-    <img *ngIf="personaje2" [src]="personaje2.image">
+<div class="column">
+    <div class="versus">
+        <div class="column">
+            <h3 *ngIf="personaje1">{{ personaje1.name }}</h3>
+            <img *ngIf="personaje1" [src]="personaje1.image">
+            {{ opcion1 }}
+        </div>
+        <h2>V/S</h2>
+        <div class="column">
+            <h3 *ngIf="personaje2">{{ personaje2.name }}</h3>
+            <img *ngIf="personaje2" [src]="personaje2.image">
+            {{ opcion2 }}
+        </div>
+    </div>
+
+    <button (click)="jugarCachipun()">Jugar!</button>
+    <h1 *ngIf="ganador">{{ ganador }}</h1>
 </div>

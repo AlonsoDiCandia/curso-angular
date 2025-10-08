@@ -3,6 +3,7 @@ import { Character, Origin } from 'src/app/models/character';
 import { map, filter } from 'rxjs/operators'
 
 import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-origenes',
@@ -11,9 +12,9 @@ import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
 })
 export class OrigenesComponent implements OnInit {
   origenes: Origin[] = [];
-  
   origenSelecionado?: Origin;
   personajesPorOrigen: Map<string, Character[]>= new Map<string, Character[]>();
+  jugadores?: Character[] = [];
 
   constructor(private rickAndMortyService: RickAndMortyService) {}
   
@@ -27,19 +28,23 @@ export class OrigenesComponent implements OnInit {
 
   traerPersonajes(origen: Origin, url: string, name: string) {
     this.origenSelecionado = origen;
-    let personajes: Character[] = []
-    this.rickAndMortyService.getOrigen(url).subscribe(
-      data => {
-        data.residents.forEach(
-          r => {
-            this.rickAndMortyService.traerUnPersonajePorUrl(r).subscribe(
-              p => personajes.push(p)
-            )
-          }
-        )
-      }
-    )
-    this.personajesPorOrigen.set(name, personajes);
+    if (!this.personajesPorOrigen.get(name)) {
+      this.rickAndMortyService.getOrigen(url).subscribe(
+        data => {
+          const request = data.residents.map(
+            r => this.rickAndMortyService.traerUnPersonajePorUrl(r)
+          );
+
+          forkJoin(request).subscribe(personajes => {
+            this.personajesPorOrigen.set(name, personajes);
+            this.jugadores = this.personajesConLosQueJugar(name);
+          })
+        }
+      )
+    }
+    else {
+      this.jugadores = this.personajesConLosQueJugar(name);
+    }
   }
 
   personajesConLosQueJugar(origen: string): Character[] {
@@ -50,7 +55,6 @@ export class OrigenesComponent implements OnInit {
     else if (lista && lista.length <= 8) {
       return lista;
     }
-
     return [];
   }
 }

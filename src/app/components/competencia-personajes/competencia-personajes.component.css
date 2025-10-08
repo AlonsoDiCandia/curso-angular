@@ -4,3 +4,18 @@
   justify-content: center;  
   gap: 20px;               
 }
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.versus .column img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* 🔹 ajusta la imagen al espacio */
+  object-position: center;     /* centra el recorte */
+  border-radius: 6px;
+}
