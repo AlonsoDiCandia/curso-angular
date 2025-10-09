@@ -11,6 +11,7 @@ import { OrigenesComponent } from './components/origenes/origenes.component';
 import { CardPersonajeComponent } from './components/card-personaje/card-personaje.component';
 import { FilasPersonajesComponent } from './components/filas-personajes/filas-personajes.component';
 import { CompetenciaPersonajesComponent } from './components/competencia-personajes/competencia-personajes.component';
+import { ExtraComponent } from './components/extra/extra.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CompetenciaPersonajesComponent } from './components/competencia-persona
     OrigenesComponent,
     CardPersonajeComponent,
     FilasPersonajesComponent,
-    CompetenciaPersonajesComponent
+    CompetenciaPersonajesComponent,
+    ExtraComponent
   ],
   imports: [
     BrowserModule,

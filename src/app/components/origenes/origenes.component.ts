@@ -1,29 +1,43 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Character, Origin } from 'src/app/models/character';
-import { map, filter } from 'rxjs/operators'
+import { Subject, forkJoin } from 'rxjs';
+import { takeUntil } from 'rxjs/operators'
 
 import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-origenes',
   templateUrl: './origenes.component.html',
   styleUrls: ['./origenes.component.css']
 })
-export class OrigenesComponent implements OnInit {
+export class OrigenesComponent implements OnInit, OnDestroy{
   origenes: Origin[] = [];
   origenSelecionado?: Origin;
   personajesPorOrigen: Map<string, Character[]>= new Map<string, Character[]>();
   jugadores?: Character[] = [];
 
-  constructor(private rickAndMortyService: RickAndMortyService) {}
+  private destroy$ = new Subject<void>();
+  contador = 0;
+  interval: any;
+
+  constructor(
+    private rickAndMortyService: RickAndMortyService
+  ) {
+    console.log('Origenes constructor')
+  }
   
   ngOnInit(): void {
-    this.rickAndMortyService.getOrigenesDesdePersonajes().subscribe(
-      data => {
-        this.origenes = data;
-      }
-    )
+    console.log('Origenes OnInit')
+    this.rickAndMortyService.getOrigenesDesdePersonajes()
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(data => {
+      this.origenes = data;
+      console.log('📡 Llamada aún viva...')
+      this.interval = setInterval(() => {
+        this.contador = this.contador + 1;
+        console.log(this.contador);
+      }, 1000)
+    });
   }
 
   traerPersonajes(origen: Origin, url: string, name: string) {
@@ -56,5 +70,10 @@ export class OrigenesComponent implements OnInit {
       return lista;
     }
     return [];
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

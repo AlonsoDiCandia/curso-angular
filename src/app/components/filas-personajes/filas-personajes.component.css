@@ -12,17 +12,17 @@
   height: 200px;
   border: 1px solid #ccc;
   background: #f9f9f9;
-  display: flex;               /* centra la imagen dentro */
+  display: flex;             
   align-items: center;
   justify-content: center;
-  overflow: hidden;            /* oculta si la imagen se sale */
-  border-radius: 8px;          /* opcional: bordes redondeados */
+  overflow: hidden;            
+  border-radius: 8px;    
 }
 
 .card-personaje img {
   width: 100%;
   height: 100%;
-  object-fit: cover;           /* 🔹 ajusta la imagen al espacio */
-  object-position: center;     /* centra el recorte */
+  object-fit: cover;           
+  object-position: center;     
   border-radius: 6px;
 }

@@ -12,6 +12,10 @@ export class FilasPersonajesComponent {
     personaje1?: Character;
     personaje2?: Character;
 
+    ngOnInit() {
+      console.log('Filas OnInit')
+    }
+
     seleccionPersonaje(p: Character) {
       if (!this.personaje1) {
         this.personaje1 = p

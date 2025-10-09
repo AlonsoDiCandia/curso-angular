@@ -17,5 +17,5 @@
   height: 100%;
   object-fit: cover;           /* 🔹 ajusta la imagen al espacio */
   object-position: center;     /* centra el recorte */
-  border-radius: 6px;
+  border-radius: 10px;
 }
