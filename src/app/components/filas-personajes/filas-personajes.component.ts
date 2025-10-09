@@ -20,4 +20,9 @@ export class FilasPersonajesComponent {
         this.personaje2 = p
       }
     }
+
+    limpiarPersonajes() {
+      this.personaje1 = undefined;
+      this.personaje2 = undefined;
+    }
 }

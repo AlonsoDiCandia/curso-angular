@@ -6,6 +6,7 @@
 </ul>
 
 <ng-container *ngIf="personaje1 && personaje2">
+    <button (click)="limpiarPersonajes()">Limpiar personajes</button>
     <app-competencia-personajes [personaje1]="personaje1"
     [personaje2]="personaje2">
     </app-competencia-personajes>
