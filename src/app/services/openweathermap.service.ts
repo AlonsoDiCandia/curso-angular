@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Ciudad } from '../models/openweathermap';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,11 @@ export class OpenweathermapService {
       map(c => {
         c.main.temp = (c.main.temp - 273.15)
         return c;
+      }),
+      catchError(error => {
+        console.error('Error al consultar los datos de la ciudad ingresada:', error);
+
+        return throwError(() => new Error('Error al obtener datos'))
       })
     )
   }
