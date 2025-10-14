@@ -37,7 +37,7 @@ export class PersonajeComponent implements OnInit {
 
   procesarValor(valor: string) {
     if (Number(valor) != this.id) {
-      this.router.navigate(['/personaje', valor]);
+      this.router.navigate(['/ram/personaje', valor]);
     }
     // this.mostrarUnPersonaje();
   }
