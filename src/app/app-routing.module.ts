@@ -4,6 +4,7 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { PersonajeComponent } from './components/personaje/personaje.component';
 import { OrigenesComponent } from './components/origenes/origenes.component';
 import { ExtraComponent } from './components/extra/extra.component';
+import { ClimaComponent } from './components/clima/clima.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'personajes', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'personaje', component: PersonajeComponent},
   { path: 'personaje/:id', component: PersonajeComponent},
   { path: 'origenes', component: ExtraComponent},
+  { path: 'clima', component: ClimaComponent}
 ];
 
 @NgModule({

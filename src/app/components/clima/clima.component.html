@@ -1,0 +1,10 @@
+<div class="column">
+    <div>
+        <input #inputCiudad type="string" placeholder="Ingresa una ciudad">
+        <button (click)="traerDatosCiudad(inputCiudad.value)">Enviar</button>
+    </div>
+
+    <ng-container *ngIf="ciudad"> 
+        La temperatura en {{ ciudad.name }} es de: {{ ciudad.main.temp }}
+    </ng-container>
+</div>
