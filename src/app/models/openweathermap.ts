@@ -11,6 +11,7 @@ export interface Ciudad{
     sys: {
         sunrise: number;
         sunset: number;
+        sunsetDate: Date;
     }
     name: string;
 } 

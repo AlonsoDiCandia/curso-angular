@@ -4,7 +4,11 @@
         <button (click)="traerDatosCiudad(inputCiudad.value)">Enviar</button>
     </div>
 
-    <ng-container *ngIf="ciudad"> 
+    <ng-container *ngIf="ciudad && estado; else error"> 
         La temperatura en {{ ciudad.name }} es de: {{ ciudad.main.temp }}
     </ng-container>
+    
+    <ng-template #error>
+        No se pudo obtener datos de la API :c
+    </ng-template>
 </div>

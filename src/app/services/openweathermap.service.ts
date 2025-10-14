@@ -15,10 +15,18 @@ export class OpenweathermapService {
   getDatosPorCiudad(ciudad: string) : Observable<Ciudad> {
     const url = `${environment.openWeatherMapUrl}?q=${ciudad},cl&appid=${environment.openWeatherMapAPIKEY}`
     return this.http.get<Ciudad>(url).pipe(
-      map(c => {
-        c.main.temp = (c.main.temp - 273.15)
-        return c;
-      }),
+      map(c => 
+        ({ ...c,
+          main: {
+            ...c.main,
+            temp: c.main.temp - 273.15
+          },
+          sys: {
+            ...c.sys,
+            sunsetDate: new Date(c.sys.sunset * 1000)
+          }
+        })
+      ),
       catchError(error => {
         console.error('Error al consultar los datos de la ciudad ingresada:', error);
 

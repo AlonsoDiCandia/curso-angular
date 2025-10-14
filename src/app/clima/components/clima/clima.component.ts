@@ -9,13 +9,20 @@ import { OpenweathermapService } from 'src/app/services/openweathermap.service'
 })
 export class ClimaComponent {
   ciudad!: Ciudad;
+  estado: boolean = false;
 
   constructor(private openWeatherMap: OpenweathermapService) {}
 
   traerDatosCiudad(ciudad: string) {
     this.openWeatherMap.getDatosPorCiudad(ciudad).subscribe(
-      data => {
-        this.ciudad = data;
+      {
+        next: data => {
+          this.ciudad = data;
+          this.estado = true;
+        },
+        error: err => {
+          this.estado = false;
+        }
       }
     )
   }

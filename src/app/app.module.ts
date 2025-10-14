@@ -12,7 +12,6 @@ import { CardPersonajeComponent } from './components/card-personaje/card-persona
 import { FilasPersonajesComponent } from './components/filas-personajes/filas-personajes.component';
 import { CompetenciaPersonajesComponent } from './components/competencia-personajes/competencia-personajes.component';
 import { ExtraComponent } from './components/extra/extra.component';
-import { ClimaComponent } from './components/clima/clima.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { ClimaComponent } from './components/clima/clima.component';
     CardPersonajeComponent,
     FilasPersonajesComponent,
     CompetenciaPersonajesComponent,
-    ExtraComponent,
-    ClimaComponent
+    ExtraComponent
   ],
   imports: [
     BrowserModule,
