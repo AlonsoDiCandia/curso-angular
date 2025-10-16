@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { Character, CharacterResponse, Origin, Episode } from '../models/character';
 
@@ -19,8 +19,10 @@ export class RickAndMortyService {
     return this.http.get<Character>(characterUrl)
   }
 
-  traerUnPersonajePorUrl(url: string): Observable<Character> {
-    return this.http.get<Character>(url)
+  traerUnPersonajePorUrl(url: string): Observable<Character | null> {
+    return this.http.get<Character>(url).pipe(
+      catchError(() => of(null))
+    )
   }
 
   getCharacters() : Observable<Character[]> {

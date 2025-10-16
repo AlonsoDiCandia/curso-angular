@@ -10,6 +10,7 @@ import { FilasPersonajesComponent } from './components/filas-personajes/filas-pe
 import { CompetenciaPersonajesComponent } from './components/competencia-personajes/competencia-personajes.component';
 import { ExtraComponent } from './components/extra/extra.component';
 import { RamRoutingModule } from './ram-routing.module';
+import { SuperPadreComponent } from './components/super-padre/super-padre.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { RamRoutingModule } from './ram-routing.module';
     CardPersonajeComponent,
     FilasPersonajesComponent,
     CompetenciaPersonajesComponent,
-    ExtraComponent
+    ExtraComponent,
+    SuperPadreComponent
   ],
   imports: [
     CommonModule,

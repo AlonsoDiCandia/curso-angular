@@ -1,14 +1,16 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Character, Origin } from 'src/app/models/character';
 import { Subject, forkJoin } from 'rxjs';
-import { takeUntil } from 'rxjs/operators'
+import { map, takeUntil } from 'rxjs/operators'
 
 import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-origenes',
   templateUrl: './origenes.component.html',
-  styleUrls: ['./origenes.component.css']
+  styleUrls: ['./origenes.component.css'],
+  providers: [LoggerService]
 })
 export class OrigenesComponent implements OnInit, OnDestroy{
   origenes: Origin[] = [];
@@ -21,7 +23,8 @@ export class OrigenesComponent implements OnInit, OnDestroy{
   interval: any;
 
   constructor(
-    private rickAndMortyService: RickAndMortyService
+    private rickAndMortyService: RickAndMortyService,
+    public logger: LoggerService
   ) {
     console.log('Origenes constructor')
   }
@@ -49,7 +52,10 @@ export class OrigenesComponent implements OnInit, OnDestroy{
             r => this.rickAndMortyService.traerUnPersonajePorUrl(r)
           );
 
-          forkJoin(request).subscribe(personajes => {
+          forkJoin(request).pipe(
+            map(personajes => personajes.filter((p): p is Character => p !== null))
+          )
+          .subscribe(personajes => {
             this.personajesPorOrigen.set(name, personajes);
             this.jugadores = this.personajesConLosQueJugar(name);
           })
