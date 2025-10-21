@@ -28,4 +28,13 @@
     <ng-template #NoCharacter>
     <p> No hay personajes que mostrar </p>
     </ng-template>
+
+    <app-dropdown #miDropdown>
+        <button (click)="miDropdown.alternar()">Abrir/Cerrar menú</button>
+    </app-dropdown>
+
+    <app-dropdown #miDropdown2>
+        <button (click)="miDropdown2.alternar()">Abrir/Cerrar menú</button>
+    </app-dropdown>
+
 </div>

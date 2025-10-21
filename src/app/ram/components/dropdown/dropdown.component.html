@@ -1,0 +1,17 @@
+<!-- dropdown.component.html -->
+<div class="dropdown">
+  <!-- <button (click)="alternar()">
+    {{ estaAbierto() ? 'Cerrar menú' : 'Abrir menú' }}
+  </button> -->
+  <ng-content></ng-content>
+
+
+  <!-- Este contenido se muestra solo cuando el dropdown está abierto -->
+  <div class="dropdown-menu" *ngIf="estaAbierto()">
+    <p>Opción 1</p>
+    <p>Opción 2</p>
+    <p>Opción 3</p>
+  </div>
+
+  <h2 style="color: cadetblue;">Parent Logger ID: {{ dropdown.id }}</h2>
+</div>

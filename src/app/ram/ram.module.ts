@@ -11,6 +11,7 @@ import { CompetenciaPersonajesComponent } from './components/competencia-persona
 import { ExtraComponent } from './components/extra/extra.component';
 import { RamRoutingModule } from './ram-routing.module';
 import { SuperPadreComponent } from './components/super-padre/super-padre.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SuperPadreComponent } from './components/super-padre/super-padre.compon
     FilasPersonajesComponent,
     CompetenciaPersonajesComponent,
     ExtraComponent,
-    SuperPadreComponent
+    SuperPadreComponent,
+    DropdownComponent
   ],
   imports: [
     CommonModule,
