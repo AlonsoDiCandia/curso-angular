@@ -12,6 +12,7 @@ import { ExtraComponent } from './components/extra/extra.component';
 import { RamRoutingModule } from './ram-routing.module';
 import { SuperPadreComponent } from './components/super-padre/super-padre.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
   imports: [
     CommonModule,
     RamRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class RAMModule { }
