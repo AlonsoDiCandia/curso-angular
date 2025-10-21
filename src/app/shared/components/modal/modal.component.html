@@ -1,0 +1,18 @@
+<div class="backdrop" *ngIf="svc.estaAbierto()" (click)="svc.cerrar()"></div>
+
+<div class="ventana" *ngIf="svc.estaAbierto()" (click)="$event.stopPropagation()">
+    <header class="header">
+    <div class="titulo">
+      <ng-content select="[modal-title]"></ng-content>
+    </div>
+    <button class="cerrar" (click)="svc.cerrar()">×</button>
+    </header>
+
+    <section class="contenido">
+    <ng-content></ng-content>
+    </section>
+
+    <footer class="acciones">
+    <ng-content select="[modal-actions]"></ng-content>
+    </footer>
+</div>

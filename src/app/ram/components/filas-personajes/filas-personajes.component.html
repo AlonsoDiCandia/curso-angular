@@ -2,14 +2,17 @@
     <li *ngFor="let p of personajes"
     (click)="seleccionPersonaje(p)">
         <app-card>
-            <img class="card-img" [src]="p.image">
+            <img card-img [src]="p.image">
         </app-card>
     </li>
 </ul>
 
-<ng-container *ngIf="personaje1 && personaje2">
-    <button (click)="limpiarPersonajes()">Limpiar personajes</button>
-    <app-competencia-personajes [personaje1]="personaje1"
-    [personaje2]="personaje2">
+<h1 *></h1>
+
+<app-modal #modal>
+    <h3 modal-title>CACHIPUN!</h3>
+    <app-competencia-personajes 
+        [personaje1]="personaje1"
+        [personaje2]="personaje2">
     </app-competencia-personajes>
-</ng-container>
+</app-modal>

@@ -1,15 +1,23 @@
 <div class="column">
     <div class="versus">
         <div class="column">
-            <h3 *ngIf="personaje1">{{ personaje1.name }}</h3>
-            <img *ngIf="personaje1" [src]="personaje1.image">
-            {{ opcion1 }}
+            <app-card *ngIf="personaje1">
+                <h3 card-title>{{ personaje1.name }}</h3>
+                <img card-img [src]="personaje1.image">
+            </app-card>
+            <div style="margin: 10px;">
+                {{ opcion1 }}
+            </div>
         </div>
         <h2>V/S</h2>
         <div class="column">
-            <h3 *ngIf="personaje2">{{ personaje2.name }}</h3>
-            <img *ngIf="personaje2" [src]="personaje2.image">
-            {{ opcion2 }}
+            <app-card *ngIf="personaje2">
+                <h3 card-title>{{ personaje2.name }}</h3>
+                <img card-img [src]="personaje2.image">
+            </app-card>
+            <div style="margin: 10px;">
+                {{ opcion1 }}
+            </div>
         </div>
     </div>
 

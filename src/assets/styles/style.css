@@ -1,6 +1,63 @@
-app-card .card-img {
+app-card .column img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   border-radius: 8px; 
+  object-position: center;  
+}
+
+app-modal .backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+}
+app-modal .ventana {
+    background: linear-gradient(135deg, #15091e, #232251);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 24px;
+    width: min(90vw, 480px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+}
+
+app-modal .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+app-modal .titulo {
+    flex: 1;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+app-modal .cerrar {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+app-modal .cerrar:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
 }

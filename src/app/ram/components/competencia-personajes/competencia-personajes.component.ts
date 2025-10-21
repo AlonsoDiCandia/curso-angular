@@ -7,7 +7,7 @@ import { Character } from 'src/app/models/character';
   templateUrl: './competencia-personajes.component.html',
   styleUrls: ['./competencia-personajes.component.css']
 })
-export class CompetenciaPersonajesComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit{
+export class CompetenciaPersonajesComponent implements OnDestroy, OnChanges, AfterViewInit{
     @Input() personaje1?: Character;
     @Input() personaje2?: Character;
 
@@ -24,14 +24,6 @@ export class CompetenciaPersonajesComponent implements OnInit, OnDestroy, OnChan
 
     ngOnChanges(changes: SimpleChanges) {
       console.log('Competencia OnChanges')
-    }
-
-    ngOnInit() {
-      console.log('Competencia OnInit');
-      this.interval = setInterval(() => {
-        this.contador = this.contador + 1;
-        console.log(this.contador);
-      }, 1000)
     }
 
     ngAfterViewInit() {
