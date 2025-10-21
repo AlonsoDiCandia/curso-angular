@@ -35,11 +35,6 @@ export class OrigenesComponent implements OnInit, OnDestroy{
     .pipe(takeUntil(this.destroy$))
     .subscribe(data => {
       this.origenes = data;
-      console.log('📡 Llamada aún viva...')
-      this.interval = setInterval(() => {
-        this.contador = this.contador + 1;
-        console.log(this.contador);
-      }, 1000)
     });
   }
 

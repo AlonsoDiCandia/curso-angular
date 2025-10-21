@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'personajes', component: CharactersComponent },
   { path: 'personaje', component: PersonajeComponent},
   { path: 'personaje/:id', component: PersonajeComponent},
-  { path: 'origenes', component: SuperPadreComponent},
+  { path: 'origenes', component: ExtraComponent},
 ]
 
 @NgModule({

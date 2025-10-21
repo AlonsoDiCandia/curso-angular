@@ -1,7 +1,9 @@
 <ul class="grid-personajes">
-    <li class="card-personaje" *ngFor="let p of personajes"
+    <li *ngFor="let p of personajes"
     (click)="seleccionPersonaje(p)">
-        <img [src]="p.image">
+        <app-card-personaje>
+            <img class="card-img" [src]="p.image">
+        </app-card-personaje>
     </li>
 </ul>
 
