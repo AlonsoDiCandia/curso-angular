@@ -1,0 +1,7 @@
+<div *ngIf="episodios$ | async as episodios" class="column">
+    <ul>
+        <li *ngFor="let e of episodios">
+        <h3>{{ e.name }}</h3> Temporada: {{ e.episode | season }} Episodio: {{ e.episode | episodeNumber }} Lanzamiento: {{ e.air_date | airDateFormat}}
+        </li>
+    </ul>
+</div>

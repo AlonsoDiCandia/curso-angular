@@ -56,8 +56,52 @@ app-modal .cerrar:hover {
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 16px;
+  color: var(--text);
+  font: 500 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+}
+
+.column ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.column li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  margin: 10px 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+  word-break: break-word;
+}
+
+/* Subtle hierarchy: first token (name) prominent, others muted */
+.column li :nth-child(1) {
+  font-weight: 600;
+}
+
+.column li :not(:first-child) {
+  color: var(--muted);
+}
+
+/* Hover & focus states for better affordance */
+.column li:hover {
+  transform: translateY(-1px);
+  background: var(--hover);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.column li:focus-within {
+  outline: 2px solid color-mix(in oklab, var(--text) 20%, transparent);
+  outline-offset: 2px;
 }

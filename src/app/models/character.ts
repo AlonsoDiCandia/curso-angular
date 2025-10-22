@@ -25,6 +25,14 @@ export interface Origin {
     residents: string[];
 }
 
+export interface EpisodeResponse {
+    info: {
+        count: number;
+        pages: number;
+    };
+    results: Episode[]
+}
+
 export interface Episode {
     // Esto lo trae el endpoint
     id: number;

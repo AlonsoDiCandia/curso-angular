@@ -13,6 +13,10 @@ import { RamRoutingModule } from './ram-routing.module';
 import { SuperPadreComponent } from './components/super-padre/super-padre.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { SharedModule } from '../shared/shared.module';
+import { EpisodiosComponent } from './components/episodios/episodios.component';
+import { SeasonPipe } from './pipes/season.pipe';
+import { EpisodeNumberPipe } from './pipes/episode-number.pipe';
+import { AirDateFormatPipe } from './pipes/date-format.pipe';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { SharedModule } from '../shared/shared.module';
     CompetenciaPersonajesComponent,
     ExtraComponent,
     SuperPadreComponent,
-    DropdownComponent
+    DropdownComponent,
+    EpisodiosComponent,
+    SeasonPipe,
+    EpisodeNumberPipe,
+    AirDateFormatPipe
   ],
   imports: [
     CommonModule,

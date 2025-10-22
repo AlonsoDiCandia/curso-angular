@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClimaComponent } from './components/clima/clima.component';
 import { ClimaRoutingModule } from './clima-routing.module';
+import { RandomValueComponent } from './components/random-value/random-value.component';
 
 @NgModule({
   declarations: [
-    ClimaComponent
+    ClimaComponent,
+    RandomValueComponent
   ],
   imports: [
     CommonModule,
