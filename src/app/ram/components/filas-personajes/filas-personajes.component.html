@@ -9,8 +9,11 @@
 
 <app-modal #modal>
     <h3 modal-title>CACHIPUN!</h3>
-    <app-competencia-personajes 
-        [personaje1]="personaje1"
-        [personaje2]="personaje2">
-    </app-competencia-personajes>
+    <button (click)="limpiarPersonajes()">Limpiar</button>
+    <div *ngIf="personaje1 && personaje2">
+        <app-competencia-personajes 
+            [personaje1]="personaje1"
+            [personaje2]="personaje2">
+        </app-competencia-personajes>
+    </div>
 </app-modal>

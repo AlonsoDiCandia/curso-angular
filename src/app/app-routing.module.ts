@@ -7,6 +7,9 @@ const routes: Routes = [
   },
   { 
     path: 'clima', loadChildren: () => import('./clima/clima.module').then(m => m.ClimaModule)
+  },
+  { 
+    path: 'pokemon', loadChildren: () => import('./pokemon/pokemon.module').then(m => m.PokemonModule)
   }
 ];
 

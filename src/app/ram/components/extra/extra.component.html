@@ -1,6 +1,8 @@
 <!-- <h2 style="color: cadetblue;">Parent Logger ID: {{ logger.id }}</h2> -->
-<!-- <button (click)="estado = !estado">Crear/Eliminar componente origenes</button> -->
+<button (click)="estado = !estado">Crear/Eliminar componente origenes</button>
 
 
+<div *ngIf="estado">
 <app-origenes></app-origenes>
+</div>
 

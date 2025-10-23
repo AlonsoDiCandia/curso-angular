@@ -1,0 +1,9 @@
+<div *ngIf="pokedex$ | async as pokedex">
+    <ul class="grid-personajes">
+        <li *ngFor="let pokeInfo of pokedex.results; index as i">
+            <button (click)="getPokemon(pokeInfo.url)">{{ i + 1 }}</button>
+        </li>
+    </ul>
+</div>
+
+<ng-template #pokemon_detail></ng-template>

@@ -1,0 +1,8 @@
+.fondo-fuego {
+  width: 500px;
+  height: 500px;
+  background-image: url('/assets/images/fuego.png');
+  background-size: cover;        /* Ajusta al tamaño del div */
+  background-position: center;   /* Centra la imagen */
+  background-repeat: no-repeat;  /* Evita repeticiones */
+}

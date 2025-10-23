@@ -76,5 +76,6 @@ export class OrigenesComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    console.log('Se murio :c')
   }
 }

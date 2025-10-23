@@ -8,7 +8,10 @@ import { RandomWsService } from 'src/app/services/websocket.service';
 })
 export class RandomValueComponent {
 
-  data$ = this.ws.connect();
+  data$ = this.ws.connect(); // El signo $ nos dice que es un observable
   constructor(private ws: RandomWsService) { }
 
+  ngOnDestroy() {
+    console.log('Se murio tambien :c')
+  }
 }

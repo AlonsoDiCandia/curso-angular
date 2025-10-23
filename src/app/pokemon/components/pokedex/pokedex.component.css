@@ -1,0 +1,9 @@
+.grid-personajes {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+

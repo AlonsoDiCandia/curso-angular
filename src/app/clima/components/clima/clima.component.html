@@ -12,3 +12,9 @@
         No se pudo obtener datos de la API :c
     </ng-template>
 </div>
+
+<button (click)="estado = !estado">Abrir/Destruir</button>
+
+<div *ngIf="estado">
+    <app-random-value></app-random-value>
+</div>
