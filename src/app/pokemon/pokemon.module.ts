@@ -7,6 +7,7 @@ import { PlantaComponent } from './components/planta/planta.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { PokemonRoutingModule } from './pokemon-routing.module';
+import { NoDefinidoComponent } from './components/no-definido/no-definido.component';
 
 
 
@@ -15,7 +16,8 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
     PokedexComponent,
     FuegoComponent,
     AguaComponent,
-    PlantaComponent
+    PlantaComponent,
+    NoDefinidoComponent
   ],
   imports: [
     CommonModule,

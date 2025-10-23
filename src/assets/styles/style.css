@@ -56,6 +56,9 @@ app-modal .cerrar:hover {
 }
 
 .column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 900px;
   margin: 32px auto;
   padding: 0 16px;
@@ -104,4 +107,9 @@ app-modal .cerrar:hover {
 .column li:focus-within {
   outline: 2px solid color-mix(in oklab, var(--text) 20%, transparent);
   outline-offset: 2px;
+}
+
+.img-center {
+  max-width: 80%;   /* Evita que se salga del contenedor */
+  max-height: 80%;
 }
