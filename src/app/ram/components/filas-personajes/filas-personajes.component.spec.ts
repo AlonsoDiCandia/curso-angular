@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilasPersonajesComponent } from './filas-personajes.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('FilasPersonajesComponent', () => {
   let component: FilasPersonajesComponent;
@@ -8,7 +9,8 @@ describe('FilasPersonajesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilasPersonajesComponent ]
+      declarations: [ FilasPersonajesComponent ],
+      imports: [SharedModule]
     })
     .compileComponents();
 

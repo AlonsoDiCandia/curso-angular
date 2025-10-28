@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrigenesComponent } from './origenes.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('OrigenesComponent', () => {
   let component: OrigenesComponent;
@@ -8,7 +9,8 @@ describe('OrigenesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrigenesComponent ]
+      declarations: [ OrigenesComponent ],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
 
