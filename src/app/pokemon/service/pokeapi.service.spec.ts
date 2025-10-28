@@ -23,19 +23,21 @@ describe('PokeapiService', () => {
   });
 
   // --- Test 1: URL correcta para getPokedex() ---
-  it('debería llamar a la URL correcta al obtener el pokedex', () => {
-    const mockResponse: Pokedex = { results: [] }; // Respuesta mínima válida
+  it('Deberia llamar a la url correcta para obtener los datos de la pokedex', () => {
+    const mockResponse: Pokedex = { results: [] };
 
-    service.getPokedex().subscribe(data => {
-      expect(data).toEqual(mockResponse);
+    service.getPokedex().subscribe(data => { //Hago la solicitud, espero que el observable emita datos
+      expect(data).toEqual(mockResponse); // 1.- Espero datos a que lleguen NO DEL SERVIDOR, sino de mi HttpTestingController, espero linea 36 req.flush().
+                                          // 2.- Una vez la linea 36 devuelve un valor, recien en ese momento hago la comparacion si la respuesta de mi linea 36 es igual a lo que espero
     });
 
-    const req = httpMock.expectOne('https://pokeapi.co/api/v2/pokemon/?limit=151'); //Espero una peticion con esta URL y nada mas
-    expect(req.request.method).toBe('GET');
-    req.flush(mockResponse);
-  });
+    const req = httpMock.expectOne('https://pokeapi.co/api/v2/pokemon/?limit=151'); //Verifico si existe en mi HttpTestingController una solicitud a esta URL, si exite, nos devuelve la solicitud como tal
+    expect(req.request.method).toBe('GET'); //Al tener la solicitud, podemos verificar el metodo
+    req.flush(mockResponse); //Si lo anterior se cumple, emito respuesta dentro del flush, voy a linea 30
+  })
 
-  // --- 🔹 Test 2: URL correcta para getPokemon(url) ---
+
+  // --- Test 2: URL correcta para getPokemon(url) ---
   it('debería llamar a la URL correcta al obtener un Pokémon específico', () => {
     const url = 'https://pokeapi.co/api/v2/pokemon/1/';
     const mockResponse: Pokemon = { types: [{ type: { name: 'grass' } }], id: 1 } as Pokemon;
