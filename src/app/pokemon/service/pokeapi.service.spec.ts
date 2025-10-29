@@ -39,7 +39,7 @@ describe('PokeapiService', () => {
 
   // --- Test 2: URL correcta para getPokemon(url) ---
   it('debería llamar a la URL correcta al obtener un Pokémon específico', () => {
-    const url = 'https://pokeapi.co/api/v2/pokemon/1/';
+    const url = 'https://pokeapi.co/api/v2/pokemon/2/';
     const mockResponse: Pokemon = { types: [{ type: { name: 'grass' } }], id: 1 } as Pokemon;
 
     service.getPokemon(url).subscribe(data => {
@@ -51,7 +51,15 @@ describe('PokeapiService', () => {
     req.flush(mockResponse);
   });
 
-  it('debería reintentar tras 1000ms cuando el 1er intento responde 429 y luego resolver OK', fakeAsync(() => {
+  // EN LA REALIDAD
+  // Me suscribo, hago el GET y espero respuesta
+  // Tengo respuesta del servidor
+  // Verifico el estado si es 200 o 429 o 500
+  // Si da 429 o 500 se que habra un tiempo entre solicitudes DONDE NO HABRA NI UNA SOLICITUD
+  // Espero 1 segundo antes de realizar la segunda solicitud
+  // Tras el segudno hago la segunda solicitud
+  // Verifico que la segunda solicitud sea correcta
+  it('deberia reintenter tras 1s cuando el 1er intento responda 429 y luego resolver OK (200)', fakeAsync(() => {
     const url = 'https://pokeapi.co/api/v2/pokemon/1/';
     const mockOk: Pokemon = { types: [{ type: { name: 'grass' } }], id: 1 } as Pokemon;
 
@@ -63,31 +71,27 @@ describe('PokeapiService', () => {
       error: e => (err = e as HttpErrorResponse)
     });
 
-    // 1) Primera request
-    const r1 = httpMock.expectOne(url);
-    expect(r1.request.method).toBe('GET');
+    // Primer request
+    const req = httpMock.expectOne(url); // Simula ir a internet y hacer la consulta al servidor, NO HAY RESPUEST DEL SERVIDOR AUN
+    expect(req.request.method).toBe('GET');
 
-    // 2) Simular 429 (rate limited)
-    r1.flush(
+    // Simulamos la respuesta de error
+    req.flush(
       { message: 'rate limited' },
       { status: 429, statusText: 'Too Many Requests', headers: new HttpHeaders() }
     );
 
-    // Aún NO debe existir reintento antes de avanzar el tiempo
+    // En el limbo que ocurre la primera solicitud y la segunda, NO deberia haber ni un intento de salida hacia el servidor, es decir, no deberian haber requests
     httpMock.expectNone(url);
 
-    // 3) Avanzar el tiempo del backoff (1000 ms según tu implementación)
+    // Esperamos el segundo
     tick(1000);
 
-    // 4) Ahora sí aparece el 2º intento
     const r2 = httpMock.expectOne(url);
     expect(r2.request.method).toBe('GET');
-
-    // 5) Responder OK en el 2º intento
     r2.flush(mockOk);
 
-    // 6) Afirmaciones finales
     expect(err).toBeUndefined();
     expect(result).toEqual(mockOk);
-  }));
+  }))
 });
