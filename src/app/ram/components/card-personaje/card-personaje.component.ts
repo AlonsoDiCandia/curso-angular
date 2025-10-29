@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-card-personaje',
   templateUrl: './card-personaje.component.html',
   styleUrls: ['./card-personaje.component.css'],
-  encapsulation: ViewEncapsulation.None 
+  // encapsulation: ViewEncapsulation.None 
 })
 export class CardPersonajeComponent {
   @Input() personaje?: Character;

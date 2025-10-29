@@ -1,3 +1,3 @@
-<div class="card-personaje">
-    <ng-content></ng-content>
+<div *ngIf="personaje" class="card-personaje">
+    <img [src]="personaje.image">
 </div>

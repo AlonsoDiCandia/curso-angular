@@ -51,7 +51,7 @@ describe('PokeapiService', () => {
     req.flush(mockResponse);
   });
 
-    it('debería reintentar tras 1000ms cuando el 1er intento responde 429 y luego resolver OK', fakeAsync(() => {
+  it('debería reintentar tras 1000ms cuando el 1er intento responde 429 y luego resolver OK', fakeAsync(() => {
     const url = 'https://pokeapi.co/api/v2/pokemon/1/';
     const mockOk: Pokemon = { types: [{ type: { name: 'grass' } }], id: 1 } as Pokemon;
 
