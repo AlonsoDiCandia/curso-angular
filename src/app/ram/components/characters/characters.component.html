@@ -23,8 +23,16 @@
   <h3>Personaje</h3>
   <ng-container *ngIf="personajeSeleccionado">
       <app-card-personaje [personaje]="personajeSeleccionado" 
-      (favorito)="onMarcadoFavorito($event)"
-      (noFavorito)="onDesmarcadoFavorito($event)">
-    </app-card-personaje>
+        [ahora]="contador"
+        (favorito)="onMarcadoFavorito($event)"
+        (noFavorito)="onDesmarcadoFavorito($event)">
+          <ul>
+            <li #item>Uno</li>
+            <li #item>Dos</li>
+            <li #item>Tres</li>
+          </ul>
+          <h3 #texto>{{ mensaje }}</h3>
+      </app-card-personaje>
   </ng-container>
+  <button (click)="cambiarTexto()">Cambiar texto</button>
 </div>

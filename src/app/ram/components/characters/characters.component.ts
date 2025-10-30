@@ -13,6 +13,8 @@ export class CharactersComponent implements OnInit {
 
   characters: Character[] = [];
   personajeSeleccionado?: Character;
+  contador: number = 0;
+  mensaje: string = 'Hola';
 
   constructor(
     private router: Router,
@@ -33,6 +35,7 @@ export class CharactersComponent implements OnInit {
 
   seleccionarPersonaje(personaje: Character) {
     this.personajeSeleccionado = personaje;
+    this.contador++;
   }
 
   onMarcadoFavorito(p: Character) {
@@ -49,5 +52,7 @@ export class CharactersComponent implements OnInit {
     }
   }
 
-
+  cambiarTexto() {
+    this.mensaje = this.mensaje + '!';
+  }
 }

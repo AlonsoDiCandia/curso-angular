@@ -1,3 +1,9 @@
 <div *ngIf="personaje" class="card-personaje">
     <img [src]="personaje.image">
+    <div>
+        <h3>Antes: {{ antes }}</h3>
+        <h3>Despues: {{ ahora }}</h3>
+    </div>
 </div>
+
+<ng-content></ng-content>
